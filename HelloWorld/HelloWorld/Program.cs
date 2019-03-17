@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Resources;
 
 namespace HelloWorld
 {
@@ -6,7 +7,15 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, world!");
+            var res = new ResourceManager(typeof(Properties.Resources));
+            Console.WriteLine(res.GetString("WorldGreeting"));
+            WaitForUser(res);
+        }
+
+        private static void WaitForUser(ResourceManager res)
+        {
+            Console.WriteLine(res.GetString("PressEnterToContinue"));
+            Console.ReadLine();
         }
     }
 }
